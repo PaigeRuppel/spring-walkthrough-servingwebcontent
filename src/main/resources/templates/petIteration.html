@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Pet Iteration</title>
+</head>
+<body>
+	<h1>Pets as collection:</h1>
+	<p th:text="'Raw: ' + ${petsAsCollection}" />
+	<!--  "text node"  -->
+	<ul>
+		<li th:each="p: ${petsAsCollection}"
+			th:text="${p.name} + ', ' + ${p.hunger} + ', ' + ${p.boredom}" />
+	</ul>
+
+	<h1>Pets as map:</h1>
+	<p th:text="'Raw: ' + ${petsAsMap}" />
+	<ul>
+		<li th:each="petEntry: ${petsAsMap}"
+			th:text="'Entry is ' + ${petEntry} + '/' + ${petEntry.key} + ', ' + ${petEntry.value}" />
+	</ul>
+
+	<h1>Pets as collection with iteration status::</h1>
+	<p th:text="'Raw: ' + ${petsAsCollection}" />
+	<ul>
+		<li th:each="p, status: ${petsAsCollection}">
+			<p th:text="'Count: ' + ${status.count}" />
+			<p th:text="'Even: ' + ${status.even}" />
+			<p th:text="'First: ' + ${status.first}" />
+			<p th:text="'Number of Elements: ' + ${status.size}" />
+		</li>
+	</ul>
+</body>
+</html>
